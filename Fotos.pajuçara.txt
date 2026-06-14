@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mácia Barros Corretora - Galeria de Fotos</title>
+</head>
+<body style="font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333;">
+
+    <header style="background-color: #D32F2F; color: white; padding: 30px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 2em; font-weight: 700;">Mácia Barros Corretora</h1>
+        <p style="margin: 5px 0 0 0; opacity: 0.9;">Galeria da Casa Residencial - Pajuçara</p>
+    </header>
+
+    <main style="max-width: 800px; margin: 40px auto; padding: 0 20px; text-align: center;">
+        
+        <h2 style="color: #2C3E50; margin-bottom: 20px;">Explore as Fotos do Imóvel</h2>
+        <p style="color: #666; margin-bottom: 30px;">Use as setas para navegar pelas fotos internas e externas.</p>
+
+        <div style="position: relative; max-width: 100%; background-color: white; padding: 10px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); overflow: hidden;">
+            
+            <div id="container-fotos"></div>
+
+            <button onclick="mudarFoto(-1)" style="position: absolute; top: 45%; left: 20px; background-color: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px; padding: 12px 16px; border-radius: 50%; cursor: pointer;">❮</button>
+            
+            <button onclick="mudarFoto(1)" style="position: absolute; top: 45%; right: 20px; background-color: rgba(0,0,0,0.6); color: white; border: none; font-size: 24px; padding: 12px 16px; border-radius: 50%; cursor: pointer;">❯</button>
+
+        </div>
+
+        <br><br>
+        <a href="Pag.Imoveis.html" style="text-decoration: none;">
+            <button style="padding: 12px 25px; background-color: #2C3E50; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 1em;">
+                Voltar
+            </button>
+        </a>
+
+    </main>
+
+    <footer style="text-align: center; padding: 20px; background-color: #D32F2F; color: white; font-size: 0.9em; margin-top: 60px;">
+        <p>&copy; 2026 Mácia Imóveis. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // =================================================================
+        // LISTA DE FOTOS: Adicione novas fotos apenas inserindo linhas aqui
+        // =================================================================
+        const listaDeFotos = [
+            { url: "pajuçara.png", legenda: "" },
+            { url: "pajuçara1.png", legenda: "" },
+            { url: "pajuçara2.jpg", legenda: "" },
+            { url: "pajuçara3.png", legenda: "" },
+            { url: "pajuçara4.png", legenda: "" },
+        ];
+
+        // ==========================================
+        // GERAÇÃO AUTOMÁTICA DAS FOTOS NO HTML
+        // ==========================================
+        const container = document.getElementById("container-fotos");
+        
+        listaDeFotos.forEach((foto, index) => {
+            // Define que apenas a primeira foto (index 0) começa visível
+            let displayInicial = (index === 0) ? "block" : "none";
+            
+            container.innerHTML += `
+                <div class="minha-foto" style="display: ${displayInicial};">
+                    <img src="${foto.url}" alt="${foto.legenda}" style="width: 100%; height: 700px; object-fit: cover; border-radius: 6px;">
+                    <p style="background-color: #333; color: white; padding: 10px; margin: 10px 0 0 0; border-radius: 4px;">
+                        Foto ${index + 1}: ${foto.legenda}
+                    </p>
+                </div>
+            `;
+        });
+
+        // ==========================================
+        // LÓGICA DE NAVEGAÇÃO DO CARROSSEL
+        // ==========================================
+        let fotoAtual = 0; 
+        
+        function mudarFoto(direcao) {
+            let fotos = document.getElementsByClassName("minha-foto");
+            
+            // Esconde a foto que está ativa na tela
+            fotos[fotoAtual].style.display = "none";
+            
+            // Calcula a nova posição
+            fotoAtual = fotoAtual + direcao;
+            
+            // Se passar da última foto, volta para a primeira
+            if (fotoAtual >= fotos.length) {
+                fotoAtual = 0;
+            }
+            
+            // Se voltar antes da primeira foto, vai para a última
+            if (fotoAtual < 0) {
+                fotoAtual = fotos.length - 1;
+            }
+            
+            // Mostra a nova foto selecionada
+            fotos[fotoAtual].style.display = "block";
+        }
+    </script>
+
+</body>
+</html>

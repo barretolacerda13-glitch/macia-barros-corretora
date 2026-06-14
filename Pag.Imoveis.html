@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mácia Barros Corretora - Imóveis no RN</title>
+</head>
+
+<body style="font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333;">
+    
+    <header style="background-color: #D32F2F; color: white; padding: 40px 20px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+        <h1 style="margin: 0; font-size: 2.5em; font-weight: 700; letter-spacing: 1px;">Mácia Barros Corretora</h1>
+        <p style="margin: 10px 0 0 0; font-size: 1.1em; opacity: 0.9;">Veja os Imóveis cadastrados no sistema</p>
+    </header>
+
+    <section style="background-color: white; padding: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border-bottom: 1px solid #eef0f2;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; align-items: center;">
+            
+            <input type="text" id="campoPesquisa" onkeyup="filtrarImoveis()" placeholder="Pesquise por nome (ex: Galpão)..." 
+                   style="padding: 12px; width: 250px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1em; box-sizing: border-box;">
+            
+            <select id="filtroTipo" onchange="filtrarImoveis()" 
+                    style="padding: 12px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1em; background-color: white; cursor: pointer;">
+                <option value="todos">Todos os Tipos</option>
+                <option value="galpao">Galpões</option>
+                <option value="apartamento">Apartamentos</option>
+                <option value="predio">Prédio</option>
+                <option value="casa">Casa Residencial</option>
+            </select>
+
+            <input type="text" id="campoPreco" onkeyup="filtrarImoveis()" placeholder="Pesquise por valor (ex: 15000)..." 
+                   style="padding: 12px; width: 250px; border: 1px solid #CBD5E0; border-radius: 6px; font-size: 1em; box-sizing: border-box;">
+            
+        </div>
+    </section>
+
+    <main style="max-width: 1200px; margin: 40px auto; padding: 0 20px;">
+        
+        <h2 style="color: #2C3E50; text-align: center; margin-bottom: 30px; font-size: 2em;">Imóveis em Destaque</h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 50px;">
+            
+            <div class="card-imovel" data-tipo="casa" data-nome="casa pajuçara" data-preco="135000" style="background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef0f2;">
+                <img src="pajuçara.png" alt="Casa - Pajuçara" style="width: 100%; height: 220px; object-fit: cover;">
+                <div style="padding: 20px;">
+                    <h3 style="color: #D32F2F; margin-top: 0; font-size: 1.4em;">Casa Residencial - Pajuçara</h3>
+                    <p style="font-size: 1.3em; color: #2C3E50; font-weight: bold; margin: 10px 0;">R$ 135.000</p>
+                    <p style="color: #666; line-height: 1.5;"><strong>Características:</strong> Ambientes:2, Banheiros:1.</p>
+                    <span style="display: inline-block; background-color: #E8F5E9; color: #2E7D32; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9em; margin-top: 10px; margin-bottom: 15px;">Disponível para Compra</span>
+                    
+                    <a href="Fotos.pajuçara.html" style="display: block; text-decoration: none; margin-bottom: 10px;">
+                        <button style="width: 100%; padding: 10px 20px; background-color: #D32F2F; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Ir para detalhes</button>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=558487295768&text=Olá%20Mácia,%20vi%20o%20seu%20site%20e%20gostaria%20de%20informações!" target="_blank" style="display: block; text-decoration: none;">
+                        <button style="width: 100%; padding: 10px 20px; background-color: #2980B9; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Falar com a corretora sobre o Imóvel</button>
+                    </a>
+                </div>
+            </div>            
+
+            <div class="card-imovel" data-tipo="predio" data-nome="predio comercial pompeia" data-preco="970000" style="background-color: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #eef0f2;">
+                <img src="pompeia.jpg" alt="Prédio Pompeia" style="width: 100%; height: 220px; object-fit: cover;">
+                <div style="padding: 20px;">
+                    <h3 style="color: #D32F2F; margin-top: 0; font-size: 1.4em;">Prédio Comercial - Pompeia</h3>
+                    <p style="font-size: 1.3em; color: #2C3E50; font-weight: bold; margin: 10px 0;">R$ 970.000</p>
+                    <p style="color: #666; line-height: 1.5;"><strong>Características:</strong> Dormitórios 4. Banheiros 8.</p>
+                    <span style="display: inline-block; background-color: #E8F5E9; color: #2E7D32; padding: 5px 10px; border-radius: 4px; font-weight: bold; font-size: 0.9em; margin-top: 10px; margin-bottom: 15px;">Disponível para Compra</span>
+                    
+                    <a href="Fotos.pompeia.html" style="display: block; text-decoration: none; margin-bottom: 10px;">
+                        <button style="width: 100%; padding: 10px 20px; background-color: #D32F2F; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Ir para detalhes</button>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=558487295768&text=Olá%20Mácia,%20vi%20o%20seu%20site%20e%20gostaria%20de%20informações!" target="_blank" style="display: block; text-decoration: none;">
+                        <button style="width: 100%; padding: 10px 20px; background-color: #2980B9; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Falar com a corretora sobre o Imóvel</button>
+                    </a>
+                </div>
+            </div>
+
+        </div> 
+    </main>
+
+    <footer style="text-align: center; padding: 30px; background-color: #D32F2F; color: white; font-size: 0.9em; margin-top: 60px; clear: both;">
+        <p style="margin: 0;">&copy; 2026 Mácia Imóveis. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function filtrarImoveis() {
+            let textoPesquisa = document.getElementById("campoPesquisa").value.toLowerCase();
+            let tipoSelecionado = document.getElementById("filtroTipo").value;
+            let valorPesquisa = document.getElementById("campoPreco").value;
+            
+            let imoveis = document.getElementsByClassName("card-imovel");
+            
+            for (let i = 0; i < imoveis.length; i++) {
+                let imovel = imoveis[i];
+                
+                let nomeImovel = imovel.getAttribute("data-nome");
+                let tipoImovel = imovel.getAttribute("data-tipo");
+                let precoImovel = imovel.getAttribute("data-preco");
+                
+                let correspondeTexto = nomeImovel.includes(textoPesquisa);
+                let correspondeTipo = (tipoSelecionado === "todos") || (tipoImovel === tipoSelecionado);
+                let correspondePreco = precoImovel.includes(valorPesquisa);
+                
+                if (correspondeTexto && correspondeTipo && correspondePreco) {
+                    imovel.style.display = "block";
+                } else {
+                    imovel.style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
